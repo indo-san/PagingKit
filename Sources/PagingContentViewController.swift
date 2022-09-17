@@ -107,7 +107,7 @@ public protocol PagingContentViewControllerDataSource: AnyObject {
 }
 
 /// A view controller that lets the user navigate between pages of content, where each page is managed by its own view controller object.
-public class PagingContentViewController: UIViewController {
+open class PagingContentViewController: UIViewController {
     fileprivate class ExplicitPaging {
         private var oneTimeHandler: (() -> Void)?
         private(set) var isPaging: Bool
@@ -282,6 +282,13 @@ public class PagingContentViewController: UIViewController {
             loadPagesIfNeeded(page: leftSidePageIndex + 1)
         } else{
             loadPagesIfNeeded()
+        }
+    }
+
+    public func loadAllPagesIfNeeded() {
+        guard isEnabledPreloadContent else { return }
+        for i in 0..<numberOfPages {
+            loadScrollView(with: i)
         }
     }
     

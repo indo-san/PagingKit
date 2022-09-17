@@ -94,7 +94,7 @@ public protocol PagingMenuViewControllerDataSource: AnyObject {
 }
 
 /// A view controller that presents menu using cells arranged in a single column.
-public class PagingMenuViewController: UIViewController {
+open class PagingMenuViewController: UIViewController {
     /// The object that acts as the delegate of the menu view controller.
     public weak var delegate: PagingMenuViewControllerDelegate?
     /// The object that acts as the data source of the menu view controller.
